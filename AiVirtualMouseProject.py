@@ -68,7 +68,7 @@ while True:
         if fingers[1] == 1:
             
             ## Switching windows
-            if detector.palm_facing()[2] <= -10000:
+            if detector.palm_facing()[2] <= -4000:
                 # We need to atleast confirm that the palm is not facing the camera for 1 seconds
                 detector.palm_not_facing_time = time.time() if detector.palm_not_facing_time == 0 else detector.palm_not_facing_time
                 if time.time() - detector.palm_not_facing_time > 0.2:
