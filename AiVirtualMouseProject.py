@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 import HandTrackingModule as htm
 import time
-from pyautogui import size
+from screeninfo import get_monitors
 from pynput.mouse import Button, Controller as MController
 from pynput.keyboard import Key, Controller as KController
 
@@ -14,6 +14,10 @@ wCam, hCam = 640, 480
 frameR = 150  # Frame Reduction
 smoothening = 6
 #########################
+
+def get_screen_size():
+    monitor = get_monitors()[0]
+    return monitor.width, monitor.height
 
 pTime = 0
 plocX, plocY = 0, 0
@@ -39,7 +43,7 @@ print(f"Camera resolution: {actual_width}x{actual_height}")
 
 detector = htm.handDetector(maxHands=1)
 detector.palm_not_facing_time = 0
-wScr, hScr = size()
+wScr, hScr = get_screen_size()
 # print(wScr, hScr)
 
 # Initialize the mouse controller
